@@ -1,0 +1,37 @@
+﻿@model ApmQuotes.Models.QuoteModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @using(Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+    <table class="text-center" style="align-items: center">
+        <tr>
+            <th>Enter your Room Details</th>
+        </tr>
+        <tr>
+            <td>Length:</td>
+            <td>@Html.TextBoxFor(m => m.RoomLength)<td>
+        </tr>
+        <tr>
+            <td>Width:</td>
+            <td>@Html.TextBoxFor(m => m.RoomWidth)<td>
+        </tr>
+        <tr>
+            <td>Upgrades:</td>
+                <td>@Html.DropDownListFor(m => m.SeriesUpgrade, Html.GetEnumSelectList(typeof(SeriesUpgrade)))</td>
+            </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+            <tr>
+                <td>
+                    <h3>$@Html.DisplayFor(model => model.FinalCost)
+                    </h3>
+                </td>
+            </tr>
+    </table>
+    }
+</div>
